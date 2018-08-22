@@ -1,6 +1,7 @@
-FROM alpine
+FROM ubuntu:16.04
 
-RUN apk add curl bash coreutils --no-cache
+RUN apt-get update && apt-get -y install curl wget \ 
+    && rm -rf /var/lib/apt/lists/*
 
 RUN curl -Lso- bench.sh > /usr/local/bin/bench.sh && \
     chmod +x /usr/local/bin/bench.sh
